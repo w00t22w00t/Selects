@@ -17,8 +17,6 @@ const initSelects = storageData.map(() => {
   return [...selectArr];
 });
 
-console.log(initSelects);
-
 const initialState: stateType = {
   answers: storageData,
   selects: [...initSelects, [...selectArr]],
