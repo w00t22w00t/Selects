@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import './App.scss';
+import React from 'react';
+import './styles/App.scss';
 import Select from './components/Select';
 import { setAnswers } from './features/mainSlice';
 import { useAppDispatch, useAppSelector } from './hook';
@@ -35,9 +35,3 @@ function App() {
 }
 
 export default App;
-
-// TODO
-// 2. Check all 'any' types
-// 3. code review
-// 4. Styles
-// 5. LocalStorage

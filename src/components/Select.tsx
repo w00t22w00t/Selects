@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { optionType, updateAnswersType } from '../types/types';
+import '../styles/Select.scss';
 
 interface SelectProps {
   optionsList: optionType[];
@@ -14,7 +15,7 @@ const Select: FC<SelectProps> = ({ optionsList, answers, updateAnswers, selectIn
   const [showOptionList, setShowOptionList] = useState(false);
   const [localAnswer, setLocalAnswer] = useState('');
 
-  const optionsListChecked = optionsList.map((option, index) => {
+  const optionsListChecked = optionsList.map((option) => {
     return {
       ...option,
       checked: option.id === answers[selectIndex] ? true : false,
