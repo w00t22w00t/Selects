@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { optionType, updateAnswersType } from '../types/types';
 import '../styles/Select.scss';
+import CustomCheckbox from './CustomCheckbox';
 
 interface SelectProps {
   optionsList: optionType[];
@@ -60,10 +61,7 @@ const Select: FC<SelectProps> = ({ optionsList, answers, updateAnswers, selectIn
         <div className="select__selected-text" onClick={handleListDisplay}>
           <span>{defaultSelectText}</span>
           <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M1.41 7.705L6 3.125L10.59 7.705L12 6.295L6 0.295001L1.23266e-07 6.295L1.41 7.705Z"
-              fill="#2C7DFA"
-            />
+            <path d="M1.41 0.294998L6 4.875L10.59 0.294998L12 1.705L6 7.705L0 1.705L1.41 0.294998Z" fill="#2C7DFA" />
           </svg>
         </div>
         {showOptionList && (
@@ -76,13 +74,7 @@ const Select: FC<SelectProps> = ({ optionsList, answers, updateAnswers, selectIn
                   key={option.id}
                   onClick={() => handleOptionClick(option.name, option.id)}
                 >
-                  <input
-                    type="checkbox"
-                    checked={option.checked}
-                    onChange={(e) => {
-                      console.log('');
-                    }}
-                  />
+                  <CustomCheckbox isCheck={option.checked} />
                   <label>{option.name}</label>
                 </li>
               );

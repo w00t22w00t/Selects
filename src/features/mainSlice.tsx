@@ -6,25 +6,22 @@ type stateType = {
   selects: optionType[][];
 };
 
+const selectArr = [
+  { id: 1, name: 'Варіант 1' },
+  { id: 2, name: 'Варіант 2' },
+  { id: 3, name: 'Варіант 3' },
+];
+
+const storageData = JSON.parse(localStorage.getItem('answers') || '[]');
+const initSelects = storageData.map(() => {
+  return [...selectArr];
+});
+
+console.log(initSelects);
+
 const initialState: stateType = {
-  answers: JSON.parse(localStorage.getItem('answers') || '[]'),
-  selects: [
-    [
-      { id: 1, name: 'Варіант 1' },
-      { id: 2, name: 'Варіант 2' },
-      { id: 3, name: 'Варіант 3' },
-    ],
-    [
-      { id: 1, name: 'Варіант 1' },
-      { id: 2, name: 'Варіант 2' },
-      { id: 3, name: 'Варіант 3' },
-    ],
-    [
-      { id: 1, name: 'Варіант 1' },
-      { id: 2, name: 'Варіант 2' },
-      { id: 3, name: 'Варіант 3' },
-    ],
-  ],
+  answers: storageData,
+  selects: [...initSelects, [...selectArr]],
 };
 
 export const mainSlice = createSlice({
@@ -34,6 +31,7 @@ export const mainSlice = createSlice({
     setAnswers: (state, action: PayloadAction<setAnswersProps>) => {
       state.answers[action.payload.index] = action.payload.answer;
       localStorage.setItem('answers', JSON.stringify(state.answers));
+      state.selects = [...state.selects, [...selectArr]];
     },
   },
 });

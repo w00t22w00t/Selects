@@ -17,6 +17,7 @@ function App() {
   return (
     <div className="App">
       {selects.map((select, index) => {
+        console.log(index);
         return (
           answers.length + 1 > index && (
             <Select
